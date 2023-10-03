@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pylab as plt
 from enum import Enum
 import types
-from core.base_class import BaseClass
+from datafusiontools._core.base_class import BaseClass
 
 
 class SensitivityMethods(Enum):
