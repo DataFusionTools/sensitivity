@@ -2,7 +2,8 @@ import os
 import shutil
 import pytest
 import numpy as np
-from tests.models.piping import SellmeijerRule
+
+from models.piping import SellmeijerRule
 from sensitivity.sensitivity import Sensitivity, SensitivityMethods
 
 
