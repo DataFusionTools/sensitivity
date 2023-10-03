@@ -5,7 +5,7 @@ from SALib.sample import morris as morris_sample
 from SALib.analyze import morris as morris_analyze
 from SALib.sample import saltelli
 from SALib.analyze import sobol
-from typing import Any
+from typing import Callable, Union
 import numpy as np
 import matplotlib.pylab as plt
 from enum import Enum
@@ -20,7 +20,7 @@ class SensitivityMethods(Enum):
 
 @dataclass
 class Sensitivity(BaseClass):
-    sensitivity_function: Any = None
+    sensitivity_function: Union[Callable, None] = None
     N: int = 1024
     problem: dict = field(default_factory=dict)
     sensitivity_results: dict = field(default_factory=dict)
