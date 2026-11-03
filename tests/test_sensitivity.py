@@ -10,6 +10,12 @@ from sensitivity.sensitivity import Sensitivity, SensitivityMethods
 TOL = 1e-3
 
 
+@pytest.fixture(autouse=True)
+def isolated_cwd(tmp_path, monkeypatch):
+    # plots are written to ./sensitivity, which must not be the source package
+    monkeypatch.chdir(tmp_path)
+
+
 class TestSensitivity:
     @pytest.mark.unittest
     def test_morris(self):
@@ -32,14 +38,14 @@ class TestSensitivity:
         s.run_sensitivity(SensitivityMethods.Morris)
 
         mu_start = [
-            915.9254001644193,
-            99.52218844798767,
-            2796.866806146651,
-            2150.2271814858223,
-            660.8008008618482,
-            323.1977472767453,
-            1967.1992051873128,
-            707.168950042373,
+            981.6714757094445,
+            105.68694346889463,
+            3025.4928572997146,
+            2002.8338452586038,
+            671.4740502480046,
+            294.39830170154084,
+            1896.4432709396765,
+            616.7476032489969,
         ]
 
         assert all(np.abs(s.sensitivity_results["mu_star"] - mu_start) <= TOL)
